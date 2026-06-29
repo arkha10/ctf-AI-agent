@@ -8,7 +8,6 @@ The agent runs on your host or WSL machine, reads one challenge folder, selects 
 
 - `ctf-local-solve` and `ctf-solve-local` CLI entrypoints
 - local triage for files, hashes, strings, metadata, and likely category
-- skill loader for the bundled `../ctf-skills-main` repository
 - one or two parallel local Codex solvers
 - shared memory in `workspaces/<challenge>/shared`
 - permissive local command/file tools scoped to the challenge and workspace
@@ -58,7 +57,7 @@ With explicit skills path:
 
 ```bash
 uv run ctf-local-solve ./challenges/nama_challenge \
-  --skills-path ../ctf-skills-main
+  --skills-path ../ctf-skills
 ```
 
 Use one GPT-5.5 solver:
@@ -140,28 +139,3 @@ PORT = int(os.environ.get("PORT", "31337"))
 BASE_URL = os.environ.get("BASE_URL", f"http://{HOST}:{PORT}")
 ```
 
-Run it against another target by changing environment variables:
-
-```bash
-HOST=154.57.164.82 PORT=30769 python3 solve.py
-```
-
-## Repository Layout
-
-```text
-my-ctf-agent/
-├── agent/
-│   ├── backend/
-│   ├── LOCAL_SOLVE.md
-│   ├── README.md
-│   └── pyproject.toml
-└── ctf-skills-main/
-    ├── solve-challenge/
-    ├── ctf-web/
-    ├── ctf-pwn/
-    ├── ctf-reverse/
-    ├── ctf-crypto/
-    └── ...
-```
-
-Upload both `agent/` and `ctf-skills-main/` if you want users to clone one repository and run the agent immediately.
