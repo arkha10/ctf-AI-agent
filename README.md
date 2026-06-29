@@ -3,7 +3,6 @@
 This repository bundles:
 
 - `agent/`: local Codex CLI CTF solver
-- `ctf-skills-main/`: skill/playbook library used by the solver
 
 Run the agent from `agent/`:
 
